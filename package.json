@@ -21,5 +21,8 @@
   "devDependencies": {
     "@rbxts/compiler-types": "^1.2.7-types.0",
     "@rbxts/types": "^1.0.545"
+  },
+  "dependencies": {
+    "rbxts-transform-debug": "^1.0.0-ts4.4"
   }
 }
