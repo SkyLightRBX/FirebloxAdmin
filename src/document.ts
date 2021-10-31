@@ -157,6 +157,22 @@ export class DocumentReference {
     }
 
     public delete() {
-        
+        let Request = HttpService.RequestAsync({
+            Url: this.DocPath + "?currentDocument.exists=true",
+            Method: "DELETE"
+        })
+
+        let RequestBody:FirebaseResponse = HttpService.JSONDecode(Request.Body)
+
+        if (Request.StatusCode !== 200 && RequestBody.error) {
+            $dbg('Detected non 200 status code')
+            error(RequestBody.error.message)
+        }
+
+        return new DocumentSnapShot(
+            HttpService.JSONDecode(
+                Request.Body
+            )
+        )
     }
 }
